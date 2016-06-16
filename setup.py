@@ -1,7 +1,8 @@
+import io
 import re
 from setuptools import setup
 
-init_py = open('inquisitive/__init__.py').read()
+init_py = io.open('inquisitive/__init__.py').read()
 metadata = dict(re.findall("__([a-z]+)__ = '([^']+)'", init_py))
 metadata['doc'] = re.findall('"""(.+)"""', init_py)[0]
 
@@ -14,9 +15,7 @@ setup(
     url=metadata['url'],
     packages=['inquisitive'],
     include_package_data=True,
-    install_requires=[
-        'click < 2.1.0'
-    ],
+    install_requires=io.open('requirements/runtime.txt').readlines(),
     entry_points={
         'console_scripts': [
             'inquisitive = inquisitive.cli:main',
@@ -24,4 +23,3 @@ setup(
     },
     license=open('LICENSE').read(),
 )
-
