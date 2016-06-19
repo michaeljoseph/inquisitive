@@ -1,4 +1,3 @@
-
 import inquisitive.cli
-inquisitive.cli.main()
 
+inquisitive.cli.main()
